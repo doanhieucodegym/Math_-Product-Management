@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SanPham</title>
+</head>
+<body>
+<input type="text" id="txtValue"/>
+<input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();"/>
+<input type="button" id="btnDisplay" value="Display" onclick="display_array();" ;/>
+<div id="result"></div>
+</body>
+<script>
+    let arry = new Array();
+    let x =0;
+
+    function add_element_to_array() {
+        arry[x] = document.getElementById("txtValue").value;
+        x++;
+        document.getElementById("txtValue").value = " ";
+    }
+
+    function display_array() {
+        let e = "<hr/>";
+
+        for (let i = 0; i < arry.length; i++) {
+            e += "element" + i + "= " +arry[i] + "<input type='button' value='Edit' onclick='edit_SP(" + i + ")';/>"+"  "+"<input type='button' value=' Delete' onclick='delete_SP("+i+")';/>"+"<br/>";
+        }
+
+        document.getElementById("result").innerHTML = e;
+    }
+    //viết  ham  số đầu  vào  ,  truyền  vào  i  để  lấy  giá trị của  của phần tử
+    function edit_SP(index) {
+        document.getElementById("txtValue").value = arry[index];
+        console.log(arry[index]);
+    }
+    function delete_SP(index) {
+      arry.splice(arry[index],1);
+      
+    }
+
+</script>
+</html>
